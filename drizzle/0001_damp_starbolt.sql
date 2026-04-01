@@ -1,0 +1,1 @@
+ALTER TABLE "cases" ADD COLUMN "cover_image" text;

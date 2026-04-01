@@ -1,0 +1,809 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Palette émotionnelle: Bleu confiance + Rouge urgence + Teintes chaleureuses (Orange) */
+  --primary: oklch(0.55 0.22 240); /* Bleu confiance */
+  --primary-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.5 0.2 240);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --chart-1: oklch(0.7 0.15 240);
+  --chart-2: oklch(0.6 0.2 240);
+  --chart-3: oklch(0.5 0.22 240);
+  --chart-4: oklch(0.65 0.25 30); /* Orange chaleureux */
+  --chart-5: oklch(0.55 0.23 15); /* Rouge urgence */
+  --radius: 0.75rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.235 0.015 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.015 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.015 240);
+  --secondary: oklch(0.65 0.25 30); /* Orange chaleureux */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.967 0.01 240);
+  --muted-foreground: oklch(0.552 0.016 240);
+  --accent: oklch(0.95 0.05 240);
+  --accent-foreground: oklch(0.3 0.15 240);
+  --destructive: oklch(0.55 0.23 15); /* Rouge urgence */
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.004 240);
+  --input: oklch(0.92 0.004 240);
+  --ring: oklch(0.55 0.22 240);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.235 0.015 240);
+  --sidebar-accent: oklch(0.967 0.01 240);
+  --sidebar-accent-foreground: oklch(0.3 0.15 240);
+  --sidebar-border: oklch(0.92 0.004 240);
+  --sidebar-ring: oklch(0.55 0.22 240);
+  
+  /* Accessibilité - Espacement */
+  --line-height: 1.6;
+  --letter-spacing: 0px;
+}
+
+.dark {
+  --primary: oklch(0.6 0.22 240); /* Bleu confiance plus clair */
+  --primary-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.55 0.2 240);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --background: oklch(0.15 0.01 240);
+  --foreground: oklch(0.95 0.005 240);
+  --card: oklch(0.2 0.015 240);
+  --card-foreground: oklch(0.95 0.005 240);
+  --popover: oklch(0.2 0.015 240);
+  --popover-foreground: oklch(0.95 0.005 240);
+  --secondary: oklch(0.7 0.25 30); /* Orange chaleureux plus clair */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.25 0.015 240);
+  --muted-foreground: oklch(0.7 0.015 240);
+  --accent: oklch(0.3 0.1 240);
+  --accent-foreground: oklch(0.9 0.05 240);
+  --destructive: oklch(0.6 0.23 15); /* Rouge urgence plus clair */
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.6 0.22 240);
+  --chart-1: oklch(0.7 0.15 240);
+  --chart-2: oklch(0.6 0.2 240);
+  --chart-3: oklch(0.5 0.22 240);
+  --chart-4: oklch(0.65 0.25 30);
+  --chart-5: oklch(0.55 0.23 15);
+  --sidebar: oklch(0.2 0.015 240);
+  --sidebar-foreground: oklch(0.95 0.005 240);
+  --sidebar-accent: oklch(0.25 0.015 240);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.6 0.22 240);
+}
+
+/* Mode contraste élevé */
+[data-color-scheme="high-contrast"] {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);
+  --primary: oklch(0.3 0.25 240);
+  --primary-foreground: oklch(1 0 0);
+  --border: oklch(0 0 0);
+  --card: oklch(0.98 0 0);
+  --card-foreground: oklch(0 0 0);
+}
+
+[data-color-scheme="high-contrast"].dark {
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+  --primary: oklch(0.7 0.25 240);
+  --primary-foreground: oklch(0 0 0);
+  --border: oklch(1 0 0);
+  --card: oklch(0.1 0 0);
+  --card-foreground: oklch(1 0 0);
+}
+
+/* Daltonisme - Deutéranopie (rouge-vert) */
+[data-color-scheme="deuteranopia"] {
+  --primary: oklch(0.55 0.22 240); /* Bleu */
+  --destructive: oklch(0.6 0.25 60); /* Jaune */
+  --secondary: oklch(0.5 0.2 300); /* Violet */
+}
+
+/* Daltonisme - Protanopie (rouge) */
+[data-color-scheme="protanopia"] {
+  --primary: oklch(0.5 0.22 220); /* Cyan */
+  --destructive: oklch(0.65 0.25 70); /* Jaune-orange */
+  --secondary: oklch(0.5 0.2 310); /* Magenta */
+}
+
+/* Daltonisme - Tritanopie (bleu-jaune) */
+[data-color-scheme="tritanopia"] {
+  --primary: oklch(0.45 0.25 350); /* Rouge-rose */
+  --destructive: oklch(0.55 0.23 15); /* Rouge */
+  --secondary: oklch(0.5 0.2 180); /* Cyan */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1.25rem;
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
+  }
+
+  /* Animations réduites */
+  .reduce-motion {
+    /* Apply to common page elements only, not to overlays/portals */
+    & h1, & h2, & h3, & h4, & h5, & h6,
+    & p, & span, & a, & img, & svg,
+    & div:not([data-radix-popper-content-wrapper]):not([data-radix-portal]),
+    & section, & article, & main, & nav, & footer, & header,
+    & ul, & ol, & li,
+    & input, & textarea, & select {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Mode lecteur d'écran */
+  .screen-reader-mode *:focus {
+    outline: 3px solid oklch(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Highlight for currently-read element in screen reader mode */
+  .sr-highlight {
+    outline: 3px solid oklch(var(--primary)) !important;
+    outline-offset: 3px;
+    background-color: oklch(var(--primary) / 0.08) !important;
+    border-radius: 4px;
+    transition: outline 0.2s ease, background-color 0.2s ease;
+  }
+
+  /* Ensure toolbar doesn't get cut off */
+  .sr-toolbar {
+    pointer-events: auto;
+  }
+
+  /* Navigation au clavier */
+  .keyboard-navigation *:focus-visible {
+    outline: 3px solid oklch(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* ── Motor / Physical Disability Mode ──────────────────────────────── */
+
+  /* Large touch targets: min 44×44px per WCAG 2.1 Target Size (Level AAA = 44px) */
+  .motor-mode button,
+  .motor-mode [role="button"],
+  .motor-mode a[href],
+  .motor-mode input[type="checkbox"],
+  .motor-mode input[type="radio"],
+  .motor-mode select,
+  .motor-mode [role="tab"],
+  .motor-mode [role="menuitem"],
+  .motor-mode [role="option"],
+  .motor-mode [role="listbox"],
+  .motor-mode summary {
+    min-height: 48px !important;
+    min-width: 48px !important;
+  }
+
+  /* Larger text inputs / textareas for easier targeting */
+  .motor-mode input[type="text"],
+  .motor-mode input[type="email"],
+  .motor-mode input[type="password"],
+  .motor-mode input[type="search"],
+  .motor-mode input[type="url"],
+  .motor-mode input[type="tel"],
+  .motor-mode input[type="number"],
+  .motor-mode textarea,
+  .motor-mode select {
+    min-height: 48px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Increase padding on buttons so they're easier to press */
+  .motor-mode button,
+  .motor-mode [role="button"],
+  .motor-mode a.inline-flex {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Icon-only buttons get square 48px */
+  .motor-mode button:has(> svg:only-child),
+  .motor-mode [role="button"]:has(> svg:only-child) {
+    min-width: 48px !important;
+    min-height: 48px !important;
+    padding: 0.75rem !important;
+  }
+  .motor-mode button:has(> svg:only-child) svg,
+  .motor-mode [role="button"]:has(> svg:only-child) svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+
+  /* Wider spacing between interactive elements */
+  .motor-mode .flex.gap-2 { gap: 0.75rem !important; }
+  .motor-mode .flex.gap-1 { gap: 0.5rem !important; }
+  .motor-mode nav .flex.gap-1 { gap: 0.75rem !important; }
+
+  /* Larger and more visible focus rings */
+  .motor-mode *:focus-visible {
+    outline: 4px solid oklch(0.6 0.22 240) !important;
+    outline-offset: 4px !important;
+    box-shadow: 0 0 0 8px oklch(0.6 0.22 240 / 0.25) !important;
+    border-radius: 4px;
+  }
+
+  /* Increase card clickable area spacing */
+  .motor-mode .grid.gap-6 { gap: 2rem !important; }
+  .motor-mode .grid.gap-4 { gap: 1.5rem !important; }
+  .motor-mode .space-y-3 > * + * { margin-top: 1rem !important; }
+  .motor-mode .space-y-4 > * + * { margin-top: 1.5rem !important; }
+
+  /* Badge / small elements: make more clickable */
+  .motor-mode [class*="badge"],
+  .motor-mode .badge {
+    padding: 0.375rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    min-height: 32px !important;
+  }
+
+  /* Dropdown / menu items: larger targets */
+  .motor-mode [role="menuitem"],
+  .motor-mode [role="option"],
+  .motor-mode [cmdk-item] {
+    min-height: 48px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Links inside text: bigger clickable area */
+  .motor-mode a {
+    padding: 0.125rem 0.25rem !important;
+    margin: -0.125rem -0.25rem !important;
+  }
+
+  /* Scrollbar: wider for easier grabbing */
+  .motor-mode ::-webkit-scrollbar {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .motor-mode ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: oklch(0.6 0 0);
+  }
+
+  /* Avatar / icon buttons in header: enlarge */
+  .motor-mode .h-6.w-6,
+  .motor-mode .h-7.w-7 {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+
+  /* ── End Motor Mode ─────────────────────────────────────────────── */
+
+  /* ── Hearing Accessibility Mode ─────────────────────────────────── */
+
+  /* When hearing mode is on, ensure all interactive feedback is visual */
+  .hearing-mode [role="alert"],
+  .hearing-mode [role="status"],
+  .hearing-mode [aria-live] {
+    border-left: 4px solid oklch(0.7 0.15 85) !important;
+    padding-left: 0.75rem !important;
+  }
+
+  /* Emphasize notification badges and alerts */
+  .hearing-mode .badge,
+  .hearing-mode [class*="badge"] {
+    animation: hearing-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes hearing-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+
+  /* Sound indicator visual markers */
+  .hearing-mode .sound-indicators video,
+  .hearing-mode .sound-indicators audio {
+    outline: 3px solid oklch(0.7 0.15 85) !important;
+    outline-offset: 2px !important;
+    border-radius: 8px;
+  }
+
+  /* Visual emphasis on status changes */
+  .hearing-mode .toast,
+  .hearing-mode [data-sonner-toast] {
+    border-left: 4px solid oklch(0.7 0.15 85) !important;
+    font-weight: 500 !important;
+  }
+
+  /* Sign language icon indicator on media — uses JS overlay (SignLanguageOverlay component) */
+  .hearing-mode.sign-language-icons video,
+  .hearing-mode.sign-language-icons audio {
+    position: relative;
+    outline: 3px dashed oklch(0.7 0.15 85) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Add a visual badge on buttons when sign language mode is on */
+  .hearing-mode.sign-language-icons button[type="submit"],
+  .hearing-mode.sign-language-icons a[href*="/case/"] {
+    position: relative;
+    outline: 2px solid oklch(0.75 0.15 85) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* ── End Hearing Mode ──────────────────────────────────────────── */
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /* ───────────────────────────────────────────────────────────────────────
+     Custom Animations for Professional UI
+     ─────────────────────────────────────────────────────────────────────── */
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-in-from-bottom {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-from-top {
+    from {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-from-right {
+    from {
+      opacity: 0;
+      transform: translateX(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes zoom-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-in {
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    animation-name: fade-in;
+  }
+
+  .slide-in-from-bottom-2 {
+    animation-name: slide-in-from-bottom;
+  }
+
+  .slide-in-from-bottom-3 {
+    animation-name: slide-in-from-bottom;
+  }
+
+  .slide-in-from-bottom-4 {
+    animation-name: slide-in-from-bottom;
+  }
+
+  .slide-in-from-top-1 {
+    animation-name: slide-in-from-top;
+  }
+
+  .slide-in-from-top-2 {
+    animation-name: slide-in-from-top;
+  }
+
+  .slide-in-from-right-4 {
+    animation-name: slide-in-from-right;
+  }
+
+  .zoom-in {
+    animation-name: zoom-in;
+  }
+
+  .duration-200 {
+    animation-duration: 200ms;
+  }
+
+  .duration-300 {
+    animation-duration: 300ms;
+  }
+
+  .duration-500 {
+    animation-duration: 500ms;
+  }
+
+  .duration-700 {
+    animation-duration: 700ms;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+
+  /* ───────────────────────────────────────────────────────────────────────
+     Neurodivergent / Sensory preference system
+     ─────────────────────────────────────────────────────────────────────── */
+
+  /* ── Calm colour palettes ── */
+  [data-calm-palette="calm-blue"] {
+    --primary: oklch(0.6 0.12 230) !important;
+    --primary-foreground: oklch(1 0 0) !important;
+    --secondary: oklch(0.7 0.08 230) !important;
+    --secondary-foreground: oklch(0.2 0.02 230) !important;
+    --accent: oklch(0.92 0.03 230) !important;
+    --accent-foreground: oklch(0.3 0.08 230) !important;
+    --destructive: oklch(0.6 0.14 20) !important;
+    --background: oklch(0.98 0.01 230) !important;
+    --foreground: oklch(0.25 0.03 230) !important;
+  }
+  [data-calm-palette="calm-green"] {
+    --primary: oklch(0.58 0.1 155) !important;
+    --primary-foreground: oklch(1 0 0) !important;
+    --secondary: oklch(0.72 0.06 155) !important;
+    --secondary-foreground: oklch(0.2 0.02 155) !important;
+    --accent: oklch(0.93 0.03 155) !important;
+    --accent-foreground: oklch(0.3 0.06 155) !important;
+    --destructive: oklch(0.6 0.12 20) !important;
+    --background: oklch(0.98 0.01 155) !important;
+    --foreground: oklch(0.25 0.03 155) !important;
+  }
+  [data-calm-palette="calm-warm"] {
+    --primary: oklch(0.62 0.1 60) !important;
+    --primary-foreground: oklch(1 0 0) !important;
+    --secondary: oklch(0.75 0.06 50) !important;
+    --secondary-foreground: oklch(0.25 0.02 50) !important;
+    --accent: oklch(0.94 0.03 50) !important;
+    --accent-foreground: oklch(0.3 0.06 50) !important;
+    --destructive: oklch(0.58 0.12 15) !important;
+    --background: oklch(0.98 0.01 50) !important;
+    --foreground: oklch(0.25 0.03 50) !important;
+  }
+  [data-calm-palette="monochrome"] {
+    --primary: oklch(0.45 0 0) !important;
+    --primary-foreground: oklch(1 0 0) !important;
+    --secondary: oklch(0.7 0 0) !important;
+    --secondary-foreground: oklch(0.15 0 0) !important;
+    --accent: oklch(0.92 0 0) !important;
+    --accent-foreground: oklch(0.25 0 0) !important;
+    --destructive: oklch(0.45 0 0) !important;
+    --destructive-foreground: oklch(1 0 0) !important;
+    --ring: oklch(0.5 0 0) !important;
+    --background: oklch(0.98 0 0) !important;
+    --foreground: oklch(0.2 0 0) !important;
+    --muted: oklch(0.9 0 0) !important;
+    --muted-foreground: oklch(0.5 0 0) !important;
+    --chart-1: oklch(0.7 0 0) !important;
+    --chart-2: oklch(0.55 0 0) !important;
+    --chart-3: oklch(0.4 0 0) !important;
+    --chart-4: oklch(0.6 0 0) !important;
+    --chart-5: oklch(0.5 0 0) !important;
+  }
+
+  /* ── Sensory level: low ── */
+  [data-sensory="low"] {
+    --radius: 0.25rem;
+  }
+  /* Remove shadows and effects from page content */
+  [data-sensory="low"] main *,
+  [data-sensory="low"] header *,
+  [data-sensory="low"] footer *,
+  [data-sensory="low"] section *,
+  [data-sensory="low"] article *,
+  [data-sensory="low"] .card,
+  [data-sensory="low"] [class*="shadow"] {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  /* Reduce animations */
+  [data-sensory="low"] [class*="animate"],
+  [data-sensory="low"] [class*="transition"] {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+  [data-sensory="low"] img:not([role="img"]),
+  [data-sensory="low"] svg.decorative {
+    opacity: 0.8;
+  }
+
+  /* ── Sensory level: minimal ── */
+  [data-sensory="minimal"] {
+    --radius: 0 !important;
+    --radius-sm: 0 !important;
+    --radius-md: 0 !important;
+    --radius-lg: 0 !important;
+    --radius-xl: 0 !important;
+  }
+  /* Completely flat design */
+  [data-sensory="minimal"] main *,
+  [data-sensory="minimal"] header *,
+  [data-sensory="minimal"] footer *,
+  [data-sensory="minimal"] section *,
+  [data-sensory="minimal"] article *,
+  [data-sensory="minimal"] .card,
+  [data-sensory="minimal"] button,
+  [data-sensory="minimal"] input,
+  [data-sensory="minimal"] [class*="rounded"] {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-radius: 0 !important;
+    background-image: none !important;
+  }
+  /* Kill all animations */
+  [data-sensory="minimal"] * {
+    animation: none !important;
+    transition: none !important;
+  }
+  /* Remove gradient backgrounds */
+  [data-sensory="minimal"] [class*="gradient"],
+  [data-sensory="minimal"] [class*="bg-gradient"] {
+    background-image: none !important;
+    background: var(--background) !important;
+  }
+
+  /* ── Content density ── */
+  [data-density="compact"] {
+    --density-scale: 0.75;
+  }
+  [data-density="compact"] .py-8 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+  [data-density="compact"] .py-12 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+  [data-density="compact"] .py-16 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+  [data-density="compact"] .gap-4 { gap: 0.5rem !important; }
+  [data-density="compact"] .gap-6 { gap: 0.75rem !important; }
+  
+  [data-density="comfortable"] {
+    --density-scale: 1;
+  }
+  
+  [data-density="spacious"] {
+    --density-scale: 1.5;
+  }
+  [data-density="spacious"] .container {
+    max-width: 960px !important;
+  }
+  [data-density="spacious"] .py-8 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+  [data-density="spacious"] .py-12 { padding-top: 6rem !important; padding-bottom: 6rem !important; }
+  [data-density="spacious"] .py-16 { padding-top: 8rem !important; padding-bottom: 8rem !important; }
+  [data-density="spacious"] .gap-2 { gap: 1rem !important; }
+  [data-density="spacious"] .gap-3 { gap: 1.5rem !important; }
+  [data-density="spacious"] .gap-4 { gap: 2rem !important; }
+  [data-density="spacious"] .gap-6 { gap: 3rem !important; }
+  [data-density="spacious"] .space-y-2 > * + * { margin-top: 1rem !important; }
+  [data-density="spacious"] .space-y-3 > * + * { margin-top: 1.5rem !important; }
+  [data-density="spacious"] .space-y-4 > * + * { margin-top: 2rem !important; }
+  [data-density="spacious"] .space-y-6 > * + * { margin-top: 3rem !important; }
+  [data-density="spacious"] p,
+  [data-density="spacious"] li {
+    line-height: 2 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* ── Hide decorative elements ── */
+  .nd-hide-decorative main .decorative,
+  .nd-hide-decorative main img[role="presentation"],
+  .nd-hide-decorative main svg[role="presentation"] {
+    opacity: 0 !important;
+    pointer-events: none;
+  }
+
+  /* ── Reduced interactions — scoped to page content only ── */
+  .nd-reduced-interactions main [class*="transition"],
+  .nd-reduced-interactions header [class*="transition"],
+  .nd-reduced-interactions footer [class*="transition"],
+  .nd-reduced-interactions main [class*="animate"],
+  .nd-reduced-interactions header [class*="animate"] {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  /* Disable all hover effects */
+  .nd-reduced-interactions main *:hover,
+  .nd-reduced-interactions header *:hover,
+  .nd-reduced-interactions footer *:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    scale: 1 !important;
+    opacity: 1 !important;
+  }
+  /* Specifically target hover:shadow classes */
+  .nd-reduced-interactions [class*="hover:shadow"]:hover {
+    box-shadow: none !important;
+  }
+
+  /* ── Predictable layout ── */
+  .nd-predictable-layout [class*="carousel"],
+  .nd-predictable-layout [class*="slider"],
+  .nd-predictable-layout [class*="marquee"],
+  .nd-predictable-layout [data-auto-scroll] {
+    animation: none !important;
+    overflow: visible !important;
+  }
+  .nd-predictable-layout [data-auto-scroll] {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* ── Focus highlight ── */
+  .nd-focus-highlight main *:focus-visible,
+  .nd-focus-highlight header *:focus-visible,
+  .nd-focus-highlight footer *:focus-visible {
+    outline: 3px solid oklch(0.6 0.22 240) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 6px oklch(0.6 0.22 240 / 0.2) !important;
+  }
+
+  /* ── Simplified UI — hide non-essential chrome ── */
+  .nd-simplified [data-decorative],
+  .nd-simplified footer .social-links,
+  .nd-simplified .promotional-banner,
+  .nd-simplified .cookie-banner {
+    display: none !important;
+  }
+
+  /* ── Dyslexia-friendly font ── */
+  .nd-dyslexia-font body {
+    font-family: "OpenDyslexic", "Comic Sans MS", sans-serif !important;
+    letter-spacing: 0.05em;
+    word-spacing: 0.15em;
+  }
+  .nd-dyslexia-font main *,
+  .nd-dyslexia-font header *,
+  .nd-dyslexia-font footer * {
+    font-family: inherit !important;
+  }
+
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}

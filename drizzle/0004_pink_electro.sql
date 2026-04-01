@@ -1,0 +1,1 @@
+ALTER TABLE "cases" ADD COLUMN "association_name" varchar(255);

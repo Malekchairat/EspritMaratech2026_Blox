@@ -1,0 +1,83 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1770420863872,
+      "tag": "0000_heavy_black_queen",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1770423252380,
+      "tag": "0001_damp_starbolt",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1770458391140,
+      "tag": "0002_bitter_husk",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1770459863350,
+      "tag": "0003_great_zarda",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1770461119637,
+      "tag": "0004_pink_electro",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1770463406464,
+      "tag": "0005_tiresome_madame_hydra",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1770467790749,
+      "tag": "0006_deep_thor_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1770488785921,
+      "tag": "0007_skinny_cloak",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1770495774408,
+      "tag": "0008_yellow_omega_flight",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1770532543921,
+      "tag": "0009_sweet_vampiro",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1774371959819,
+      "tag": "0010_clever_shooting_star",
+      "breakpoints": true
+    }
+  ]
+}
