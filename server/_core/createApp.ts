@@ -15,8 +15,12 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 
 export function createApp() {
   const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || "";
-  if (!STRIPE_SECRET_KEY) throw new Error("STRIPE_SECRET_KEY missing");
-  const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: "2023-10-16" as any });
+  if (!STRIPE_SECRET_KEY) {
+    console.warn("[Server] STRIPE_SECRET_KEY not set - payment features disabled");
+  }
+  const stripe = STRIPE_SECRET_KEY
+    ? new Stripe(STRIPE_SECRET_KEY, { apiVersion: "2023-10-16" as any })
+    : null;
 
   const app = express();
   const server = createServer(app);
@@ -32,6 +36,7 @@ export function createApp() {
 
   // Stripe payment endpoint
   app.post("/api/payment/stripe-session", async (req: Request, res: Response) => {
+    if (!stripe) return res.status(503).json({ error: "Payment not configured" });
     try {
       const { amount, description, caseId } = req.body;
       const amountUSD = Math.round(amount * 0.33);
@@ -66,6 +71,7 @@ export function createApp() {
 
   // Verify Stripe payment
   app.post("/api/payment/verify-stripe", async (req: Request, res: Response) => {
+    if (!stripe) return res.status(503).json({ error: "Payment not configured" });
     try {
       const { sessionId } = req.body;
       if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
