@@ -120,12 +120,12 @@ export function registerFaceAuthRoutes(app: Express) {
         return;
       }
 
-      // Update last signed in & streak
+      // Update last signed in & streak (non-fatal)
       await db.upsertUser({
         openId: user.openId,
         lastSignedIn: new Date(),
-      });
-      await db.updateLoginStreak(user.id);
+      }).catch((err: unknown) => console.warn("[FaceAuth] upsertUser failed:", err));
+      await db.updateLoginStreak(user.id).catch((err: unknown) => console.warn("[FaceAuth] updateLoginStreak failed:", err));
 
       const sessionToken = await createSessionToken({
         userId: user.id,

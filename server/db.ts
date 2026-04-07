@@ -231,6 +231,13 @@ export async function updateCaseStatus(caseId: number, status: "pending" | "appr
   await db.update(cases).set({ status }).where(eq(cases.id, caseId));
 }
 
+export async function deleteCase(caseId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.delete(cases).where(eq(cases.id, caseId));
+}
+
 // Association queries
 export async function getCasesByAssociation(associationId: number) {
   const db = await getDb();

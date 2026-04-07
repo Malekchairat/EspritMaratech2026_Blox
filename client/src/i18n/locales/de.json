@@ -495,5 +495,12 @@
     "shareDesc": "Helfen Sie, Sichtbarkeit zu schaffen",
     "copyLink": "Link kopieren",
     "copied": "Kopiert!"
+  },
+  "nav": {
+    "myPage": "Meine Seite",
+    "members": "Mitglieder",
+    "hostMeetings": "Meetings veranstalten",
+    "myMemberships": "Meine Mitgliedschaften",
+    "myMeetings": "Meetings"
   }
 }

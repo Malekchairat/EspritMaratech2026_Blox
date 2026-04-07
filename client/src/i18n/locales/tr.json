@@ -495,5 +495,12 @@
     "shareDesc": "Görünürlük kazandırmaya yardımcı olun",
     "copyLink": "Bağlantıyı kopyala",
     "copied": "Kopyalandı!"
+  },
+  "nav": {
+    "myPage": "Sayfam",
+    "members": "Üyeler",
+    "hostMeetings": "Toplantı Düzenle",
+    "myMemberships": "Üyeliklerim",
+    "myMeetings": "Toplantılar"
   }
 }

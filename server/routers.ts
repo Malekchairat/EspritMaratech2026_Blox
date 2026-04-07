@@ -314,6 +314,29 @@ export const appRouter = router({
         await db.adminDeleteUser(input.userId);
         return { success: true };
       }),
+
+    deleteCase: adminProcedure
+      .input(z.object({ caseId: z.number() }))
+      .mutation(async ({ input }) => {
+        await db.deleteCase(input.caseId);
+        return { success: true };
+      }),
+
+    updateCaseAdmin: adminProcedure
+      .input(z.object({
+        caseId: z.number(),
+        title: z.string().optional(),
+        description: z.string().optional(),
+        category: z.enum(["health", "disability", "children", "education", "renovation", "emergency"]).optional(),
+        targetAmount: z.number().optional(),
+        isUrgent: z.boolean().optional(),
+        coverImage: z.string().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { caseId, ...updateData } = input;
+        await db.updateCase(caseId, updateData);
+        return { success: true };
+      }),
   }),
 
   // Favorites router

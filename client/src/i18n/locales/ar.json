@@ -495,5 +495,12 @@
     "shareDesc": "ساعد في إعطاء الحالة رؤية أوسع",
     "copyLink": "نسخ الرابط",
     "copied": "تم النسخ!"
+  },
+  "nav": {
+    "myPage": "صفحتي",
+    "members": "الأعضاء",
+    "hostMeetings": "إدارة الاجتماعات",
+    "myMemberships": "اشتراكاتي",
+    "myMeetings": "الاجتماعات"
   }
 }

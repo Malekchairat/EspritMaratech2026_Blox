@@ -404,8 +404,8 @@ export function registerAuthRoutes(app: Express) {
         });
       }
 
-      // Update streak for all login types
-      await db.updateLoginStreak(user.id);
+      // Update streak for all login types (non-fatal)
+      await db.updateLoginStreak(user.id).catch((err) => console.warn("[Auth] Google updateLoginStreak failed:", err));
 
       // Create session token and set cookie
       const sessionToken = await createSessionToken({

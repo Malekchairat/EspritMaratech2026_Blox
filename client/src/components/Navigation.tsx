@@ -149,13 +149,13 @@ export function Navigation() {
                       <DropdownMenuItem asChild className="cursor-pointer">
                         <Link href="/memberships">
                           <Users className="h-4 w-4 mr-2" />
-                          My Memberships
+                          {t("nav.myMemberships")}
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild className="cursor-pointer">
                         <Link href="/meetings">
                           <Video className="h-4 w-4 mr-2" />
-                          Meetings
+                          {t("nav.myMeetings")}
                         </Link>
                       </DropdownMenuItem>
                     </>
@@ -166,19 +166,19 @@ export function Navigation() {
                       <DropdownMenuItem asChild className="cursor-pointer">
                         <Link href={`/association/${user.id}`}>
                           <PenSquare className="h-4 w-4 mr-2" />
-                          My Page
+                          {t("nav.myPage")}
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild className="cursor-pointer">
                         <Link href="/memberships">
                           <Users className="h-4 w-4 mr-2" />
-                          Members
+                          {t("nav.members")}
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild className="cursor-pointer">
                         <Link href="/meetings">
                           <Video className="h-4 w-4 mr-2" />
-                          Host Meetings
+                          {t("nav.hostMeetings")}
                         </Link>
                       </DropdownMenuItem>
                     </>

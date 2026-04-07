@@ -531,5 +531,12 @@
     "shareDesc": "Help give visibility",
     "copyLink": "Copy link",
     "copied": "Copied!"
+  },
+  "nav": {
+    "myPage": "My Page",
+    "members": "Members",
+    "hostMeetings": "Host Meetings",
+    "myMemberships": "My Memberships",
+    "myMeetings": "Meetings"
   }
 }
