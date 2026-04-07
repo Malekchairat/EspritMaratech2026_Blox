@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020"],
+    "strict": false,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "..",
+    "paths": {
+      "@shared/*": ["./shared/*"]
+    }
+  },
+  "include": ["index.ts", "../server/**/*", "../shared/**/*", "../drizzle/**/*"]
+}

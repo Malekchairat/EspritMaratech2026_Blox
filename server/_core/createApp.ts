@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type Request, type Response } from "express";
 import { createServer } from "http";
 import Stripe from "stripe";
 import cors from "cors";
@@ -31,7 +31,7 @@ export function createApp() {
   }));
 
   // Stripe payment endpoint
-  app.post("/api/payment/stripe-session", async (req, res) => {
+  app.post("/api/payment/stripe-session", async (req: Request, res: Response) => {
     try {
       const { amount, description, caseId } = req.body;
       const amountUSD = Math.round(amount * 0.33);
@@ -65,7 +65,7 @@ export function createApp() {
   });
 
   // Verify Stripe payment
-  app.post("/api/payment/verify-stripe", async (req, res) => {
+  app.post("/api/payment/verify-stripe", async (req: Request, res: Response) => {
     try {
       const { sessionId } = req.body;
       if (!sessionId) return res.status(400).json({ error: "Missing sessionId" });
