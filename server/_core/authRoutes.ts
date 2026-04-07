@@ -41,7 +41,7 @@ function validateName(name: string): string | null {
 
 export function registerAuthRoutes(app: Express) {
   /** POST /api/auth/register */
-  app.post("/api/auth/register", async (req: Request, res: Response) => {
+  app.post("/api/auth/register", async (req: Request, res) => {
     try {
       const { name, email, password, role, avatar } = req.body;
 
@@ -123,7 +123,7 @@ export function registerAuthRoutes(app: Express) {
   });
 
   /** POST /api/auth/login */
-  app.post("/api/auth/login", async (req: Request, res: Response) => {
+  app.post("/api/auth/login", async (req: Request, res) => {
     try {
       const { email, password } = req.body;
 
@@ -184,7 +184,7 @@ export function registerAuthRoutes(app: Express) {
   });
 
   /** POST /api/auth/forgot-password – Send password reset email */
-  app.post("/api/auth/forgot-password", async (req: Request, res: Response) => {
+  app.post("/api/auth/forgot-password", async (req: Request, res) => {
     try {
       const { email } = req.body;
       if (!email || typeof email !== "string") {
@@ -226,7 +226,7 @@ export function registerAuthRoutes(app: Express) {
   });
 
   /** POST /api/auth/reset-password – Reset password with token */
-  app.post("/api/auth/reset-password", async (req: Request, res: Response) => {
+  app.post("/api/auth/reset-password", async (req: Request, res) => {
     try {
       const { token, password } = req.body;
 
@@ -294,7 +294,7 @@ export function registerAuthRoutes(app: Express) {
   });
 
   /** GET /api/auth/google/callback – Handle Google OAuth callback */
-  app.get("/api/auth/google/callback", async (req: Request, res: Response) => {
+  app.get("/api/auth/google/callback", async (req: Request, res) => {
     try {
       const { code, state, error: googleError } = req.query;
 

@@ -26,7 +26,7 @@ export function registerFaceAuthRoutes(app: Express) {
   // ──────────────────────────────────────────────────────────────
 
   /** POST /api/auth/face/register */
-  app.post("/api/auth/face/register", async (req: Request, res: Response) => {
+  app.post("/api/auth/face/register", async (req: Request, res) => {
     try {
       const user = await authenticateRequest(req);
       const { descriptor, label } = req.body;
@@ -75,7 +75,7 @@ export function registerFaceAuthRoutes(app: Express) {
   // ──────────────────────────────────────────────────────────────
 
   /** POST /api/auth/face/login */
-  app.post("/api/auth/face/login", async (req: Request, res: Response) => {
+  app.post("/api/auth/face/login", async (req: Request, res) => {
     try {
       const { descriptor } = req.body;
 
@@ -157,7 +157,7 @@ export function registerFaceAuthRoutes(app: Express) {
   // ──────────────────────────────────────────────────────────────
 
   /** GET /api/auth/face/status */
-  app.get("/api/auth/face/status", async (req: Request, res: Response) => {
+  app.get("/api/auth/face/status", async (req: Request, res) => {
     try {
       const user = await authenticateRequest(req);
       const faceData = await db.getFaceDescriptorByUserId(user.id);
@@ -177,7 +177,7 @@ export function registerFaceAuthRoutes(app: Express) {
   // ──────────────────────────────────────────────────────────────
 
   /** DELETE /api/auth/face/delete */
-  app.delete("/api/auth/face/delete", async (req: Request, res: Response) => {
+  app.delete("/api/auth/face/delete", async (req: Request, res) => {
     try {
       const user = await authenticateRequest(req);
       await db.deleteFaceDescriptor(user.id);

@@ -53,7 +53,7 @@ export function registerWebauthnRoutes(app: Express) {
   // ──────────────────────────────────────────────────────────────
 
   /** POST /api/auth/webauthn/register-options */
-  app.post("/api/auth/webauthn/register-options", async (req: Request, res: Response) => {
+  app.post("/api/auth/webauthn/register-options", async (req: Request, res) => {
     try {
       const user = await authenticateRequest(req);
 
@@ -91,7 +91,7 @@ export function registerWebauthnRoutes(app: Express) {
   });
 
   /** POST /api/auth/webauthn/register-verify */
-  app.post("/api/auth/webauthn/register-verify", async (req: Request, res: Response) => {
+  app.post("/api/auth/webauthn/register-verify", async (req: Request, res) => {
     try {
       const user = await authenticateRequest(req);
       const { credential, deviceName } = req.body;
@@ -151,7 +151,7 @@ export function registerWebauthnRoutes(app: Express) {
   // ──────────────────────────────────────────────────────────────
 
   /** POST /api/auth/webauthn/login-options */
-  app.post("/api/auth/webauthn/login-options", async (req: Request, res: Response) => {
+  app.post("/api/auth/webauthn/login-options", async (req: Request, res) => {
     try {
       // Get all credentials for discoverable login
       const allCredentials = await db.getAllWebauthnCredentials();
@@ -184,7 +184,7 @@ export function registerWebauthnRoutes(app: Express) {
   });
 
   /** POST /api/auth/webauthn/login-verify */
-  app.post("/api/auth/webauthn/login-verify", async (req: Request, res: Response) => {
+  app.post("/api/auth/webauthn/login-verify", async (req: Request, res) => {
     try {
       const { credential } = req.body;
 
@@ -271,7 +271,7 @@ export function registerWebauthnRoutes(app: Express) {
   // ──────────────────────────────────────────────────────────────
 
   /** GET /api/auth/webauthn/credentials */
-  app.get("/api/auth/webauthn/credentials", async (req: Request, res: Response) => {
+  app.get("/api/auth/webauthn/credentials", async (req: Request, res) => {
     try {
       const user = await authenticateRequest(req);
       const credentials = await db.getWebauthnCredentialsByUserId(user.id);
@@ -289,7 +289,7 @@ export function registerWebauthnRoutes(app: Express) {
   });
 
   /** DELETE /api/auth/webauthn/credentials/:id */
-  app.delete("/api/auth/webauthn/credentials/:id", async (req: Request, res: Response) => {
+  app.delete("/api/auth/webauthn/credentials/:id", async (req: Request, res) => {
     try {
       const user = await authenticateRequest(req);
       const credentialId = parseInt(req.params.id, 10);
