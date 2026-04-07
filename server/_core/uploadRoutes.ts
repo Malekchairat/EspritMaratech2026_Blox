@@ -5,7 +5,10 @@ import path from "path";
 import fs from "fs";
 import crypto from "crypto";
 
-const UPLOADS_DIR = path.resolve(process.cwd(), "uploads");
+// On Vercel, the filesystem is read-only except /tmp
+const UPLOADS_DIR = process.env.VERCEL
+  ? "/tmp/uploads"
+  : path.resolve(process.cwd(), "uploads");
 
 // Ensure uploads directory exists
 if (!fs.existsSync(UPLOADS_DIR)) {
